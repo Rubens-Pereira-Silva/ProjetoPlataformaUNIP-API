@@ -16,8 +16,7 @@ public class DesafioService {
 
     //Criar desafios no Banco
     public DesafioEntity PostDesafio(DesafioEntity desafio){
-        desafioRepository.save(desafio);
-        return desafio;
+        return desafioRepository.save(desafio);
     }
 
     //Pega o desafio com base no ID

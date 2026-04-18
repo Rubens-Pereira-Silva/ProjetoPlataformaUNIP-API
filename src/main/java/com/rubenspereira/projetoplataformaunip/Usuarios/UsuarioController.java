@@ -6,6 +6,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuario")
+@CrossOrigin(origins = "*")
 public class UsuarioController {
 
     UsuarioService usuarioService;
@@ -15,12 +16,17 @@ public class UsuarioController {
 
     //Login
     @PostMapping("/login")
-    public String login(@RequestBody LoginRequest loginData){
+    public Long login(@RequestBody LoginRequest loginData){
         return usuarioService.login(loginData);
     }
 
     @GetMapping
-    public List<UsuarioDTO> listarUsuarios(){
+    public UsuarioDTO getUsuario(@RequestParam Long id){
+        return usuarioService.buscarUsuarioPorId(id);
+    }
+
+    @GetMapping("/all")
+    public List<UsuarioEntity> listarUsuarios(){
         return usuarioService.listarUsuarios();
     }
 

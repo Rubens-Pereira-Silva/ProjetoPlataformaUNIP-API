@@ -8,24 +8,24 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class UsuarioService {
+public class UsuarioService{
 
     @Autowired
     UsuarioRepository usuarioRepository;
 
     //logar usuario
-    public String login(LoginRequest loginData){
+    public Long login(LoginRequest loginData){
         Optional<UsuarioEntity> usuario = usuarioRepository.findByEmail(loginData.getEmail());
 
         if(usuario.isEmpty()){
-            return "Usuario não encontrado";
+            return null;
         }
 
         //Compara a senha
         if(usuario.get().getSenha().equals(loginData.getSenha())){
-            return "Login realizado para ".concat(usuario.get().getNome());
+            return  usuario.get().getId();
         }
-        return "Senha Incorreta";
+        return null;
     }
 
     //Cadastra um novo usuario no banco
@@ -33,12 +33,15 @@ public class UsuarioService {
         return usuarioRepository.saveAndFlush(usuario);
     }
 
+    //Buscar usuario
+    public UsuarioDTO buscarUsuarioPorId(Long id){
+       Optional<UsuarioEntity> usuario = usuarioRepository.findById(id);
+       return new UsuarioDTO(usuario.get());
+    }
+
     //Lista todos o Usuarios
-    public List<UsuarioDTO> listarUsuarios(){
-        return usuarioRepository.findAll()
-                .stream()
-                .map(UsuarioDTO::new)
-                .toList();
+    public List<UsuarioEntity> listarUsuarios(){
+        return usuarioRepository.findAll();
     }
 
     //Deletar Usuario

@@ -7,4 +7,4 @@ COPY . .
 RUN chmod +x mvnw
 RUN ./mvnw clean package -DskipTests
 
-CMD ["java", "-jar", "target/ProjetoPlataformaUNIP.jar"]
+CMD ["java", "-jar", "target/*.jar"]

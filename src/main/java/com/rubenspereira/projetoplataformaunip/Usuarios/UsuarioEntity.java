@@ -11,7 +11,7 @@ public class UsuarioEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    private Long id;
 
     String nome;
     @Column(unique = true, nullable = false)

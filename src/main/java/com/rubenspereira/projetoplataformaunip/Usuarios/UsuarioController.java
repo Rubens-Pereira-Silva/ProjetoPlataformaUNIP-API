@@ -20,8 +20,8 @@ public class UsuarioController {
         return usuarioService.login(loginData);
     }
 
-    @GetMapping
-    public UsuarioDTO getUsuario(@RequestParam Long id){
+    @GetMapping("/{id}")
+    public UsuarioDTO getUsuario(@PathVariable Long id){
         return usuarioService.buscarUsuarioPorId(id);
     }
 

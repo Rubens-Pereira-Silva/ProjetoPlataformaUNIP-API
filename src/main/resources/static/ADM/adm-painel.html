@@ -1,42 +1,25 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ADM Painel</title>
 
-<head>
+    <link rel="stylesheet" href="admin.css" />
+  </head>
+  <body>
+    <header>
+      <button>Usuarios</button>
+      <button>Desafios</button>
+      <button>Atividades</button>
+    </header>
 
-    <meta charset="UTF-8">
-    <title>Painel Administrativo</title>
+    <main>
+      <div class="cadastro"></div>
+      <table id="usuarios"></table>
+    </main>
+  </body>
 
-    <link rel="stylesheet" href="style.css">
-
-</head>
-
-<body>
-
-<h1>Painel Administrativo</h1>
-
-<div class="menu">
-
-    <button onclick="listarUsuarios()">Usuários</button>
-    <button onclick="listarDesafios()">Desafios</button>
-    <button onclick="listarAtividades()">Atividades</button>
-
-</div>
-
-<div id="conteudo">
-
-    <p>Selecione uma opção acima.</p>
-
-</div>
-
-<script src="admin.js"></script>
-
-<script>
-
-    //carrega usuários automaticamente ao abrir
-    listarUsuarios()
-
-</script>
-
-</body>
-
+  <script src="./usuarios.js"></script>
+  <script src="./admin.js"></script>
 </html>

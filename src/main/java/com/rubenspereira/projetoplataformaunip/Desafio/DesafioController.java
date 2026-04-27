@@ -16,8 +16,8 @@ public class DesafioController {
 
     //Busca um Desafio usando o ID
     @GetMapping
-    public DesafioEntity getDesafio(@RequestParam Long id){
-        return desafioService.GetDesafio(id);
+    public List<DesafioEntity> getDesafio(@RequestBody ArrayList<Long> IDs){
+        return desafioService.GetDesafio(IDs);
     }
 
     //Busca Todos os Desafios
@@ -25,6 +25,7 @@ public class DesafioController {
     public List<DesafioEntity> getDesafios(){
         return desafioService.GetAllDesafios();
     }
+
 
     //Cria um novo desafio
     @PostMapping

@@ -3,6 +3,8 @@ package com.rubenspereira.projetoplataformaunip.Desafio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Service
@@ -20,11 +22,15 @@ public class DesafioService {
     }
 
     //Pega o desafio com base no ID
-    public DesafioEntity GetDesafio(Long id){
-        if(desafioRepository.findById(id).isPresent()){
-            return desafioRepository.findById(id).get();
-        }
-        return null;
+    public List<DesafioEntity> GetDesafio(ArrayList<Long> IDs){
+
+        List<DesafioEntity> listaDesafios = new ArrayList<>(List.of());
+
+        IDs.forEach(desafioId -> {
+            listaDesafios.add(desafioRepository.findById(desafioId).get());
+        });
+
+        return listaDesafios;
     }
 
     //Pega todos os desafios no banco

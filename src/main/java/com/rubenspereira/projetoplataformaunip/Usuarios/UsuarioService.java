@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class UsuarioService{
@@ -37,6 +38,25 @@ public class UsuarioService{
     public UsuarioDTO buscarUsuarioPorId(Long id){
        Optional<UsuarioEntity> usuario = usuarioRepository.findById(id);
        return new UsuarioDTO(usuario.get());
+    }
+
+    //Buscar top usuarios
+    public List<UsuarioDTO> buscarTopUsuarios(){
+        return usuarioRepository.findTop10ByOrderByMoedasDesc()
+                .stream()
+                .map(UsuarioDTO::new)
+                .collect(Collectors.toList());
+    }
+
+    //Adicionar Moedas
+    public UsuarioDTO adicionarMoedas(long id, int moedas){
+        usuarioRepository.findById(id).ifPresent(usuario -> {
+            usuario.setMoedas(usuario.getMoedas() + moedas);
+
+            usuarioRepository.save(usuario);
+        });
+
+        return new UsuarioDTO(usuarioRepository.findById(id).get());
     }
 
     //Lista todos o Usuarios

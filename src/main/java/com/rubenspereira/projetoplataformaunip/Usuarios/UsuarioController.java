@@ -30,9 +30,18 @@ public class UsuarioController {
         return usuarioService.listarUsuarios();
     }
 
+    @GetMapping("/top")
+    public List<UsuarioDTO> topUsuarios(){
+        return  usuarioService.buscarTopUsuarios();
+    }
+
     @PostMapping()
     public UsuarioEntity criarUsuario(@RequestBody UsuarioEntity usuario){
         return usuarioService.cadastrarUsuario(usuario);
+    }
+    @PostMapping("/moedas/{id}")
+    public UsuarioDTO adicionarMoedas(@PathVariable Long id, @RequestBody int moedas){
+        return usuarioService.adicionarMoedas(id, moedas);
     }
 
     @DeleteMapping

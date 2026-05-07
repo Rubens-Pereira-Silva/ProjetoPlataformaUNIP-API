@@ -73,4 +73,13 @@ public class UsuarioService{
                 })
                 .orElse("Usuario não encontrado!");
     }
+
+    //Loja
+    public UsuarioDTO comprarIcon(Long id, String icon){
+        usuarioRepository.findById(id).ifPresent(usuario -> {
+            usuario.setIcon(icon);
+            usuarioRepository.save(usuario);
+        });
+        return new UsuarioDTO(usuarioRepository.findById(id).get());
+    }
 }

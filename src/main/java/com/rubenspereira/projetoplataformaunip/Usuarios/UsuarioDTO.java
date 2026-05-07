@@ -10,11 +10,13 @@ public class UsuarioDTO {
     String nome;
     int moedas;
     int nivel;
+    String icon;
 
     public UsuarioDTO(UsuarioEntity usuario){
         this.nome = usuario.getNome();
         this.moedas = usuario.getMoedas();
         this.nivel = usuario.getNivel();
+        this.icon = usuario.getIcon();
     };
 
 }

@@ -20,6 +20,8 @@ public class UsuarioEntity {
     int moedas = 100;
     int nivel = 1;
 
+    String icon = "terno";
+
     public UsuarioEntity() {
     }
 }

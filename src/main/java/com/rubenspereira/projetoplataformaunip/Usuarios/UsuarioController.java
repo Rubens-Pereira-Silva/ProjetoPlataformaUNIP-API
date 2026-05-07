@@ -48,4 +48,11 @@ public class UsuarioController {
     public String deletarUsuario(@RequestParam Long id){
         return  usuarioService.deletarUsuario(id);
     }
+
+    //Loja
+
+    @PutMapping("/loja/icon/{id}")
+    public UsuarioDTO comprarIcon(@PathVariable Long id, @RequestBody String icon){
+        return usuarioService.comprarIcon(id, icon);
+    }
 }

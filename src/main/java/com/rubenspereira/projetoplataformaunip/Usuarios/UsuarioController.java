@@ -6,7 +6,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/usuario")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsuarioController {
 
     UsuarioService usuarioService;

@@ -9,6 +9,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/desafio")
+@CrossOrigin(origins = "*")
 public class DesafioController {
 
     @Autowired

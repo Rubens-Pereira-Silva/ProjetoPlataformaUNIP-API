@@ -74,11 +74,27 @@ public class UsuarioService{
                 .orElse("Usuario não encontrado!");
     }
 
+    //Terminou a atividade
+    public UsuarioDTO atualizarLevel(Long idUsuario, Long nivelAtividade){
+        usuarioRepository.findById(idUsuario).ifPresent(usuario -> {
+            if(usuario.getNivel() == nivelAtividade){
+                usuario.setNivel(usuario.getNivel() + 1);
+                usuario.setMoedas(usuario.getMoedas() + 20);
+                usuarioRepository.save(usuario);
+            }
+        });
+        return new UsuarioDTO(usuarioRepository.findById(idUsuario).get());
+    }
+
     //Loja
     public UsuarioDTO comprarIcon(Long id, String icon){
         usuarioRepository.findById(id).ifPresent(usuario -> {
-            usuario.setIcon(icon);
-            usuarioRepository.save(usuario);
+            if(usuario.getMoedas() >= 50){
+                usuario.setMoedas(usuario.getMoedas() - 50);
+                usuario.setIcon(icon);
+                usuarioRepository.save(usuario);
+            }
+
         });
         return new UsuarioDTO(usuarioRepository.findById(id).get());
     }

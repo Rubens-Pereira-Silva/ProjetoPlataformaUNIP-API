@@ -55,4 +55,11 @@ public class UsuarioController {
     public UsuarioDTO comprarIcon(@PathVariable Long id, @RequestBody String icon){
         return usuarioService.comprarIcon(id, icon);
     }
+
+
+    //Terminou a atividade
+    @PutMapping("/level/{idUsuario}/{nivelAtividade}")
+    public UsuarioDTO atualizarLevel(@PathVariable Long idUsuario, @PathVariable Long nivelAtividade){
+        return usuarioService.atualizarLevel(idUsuario, nivelAtividade);
+    }
 }

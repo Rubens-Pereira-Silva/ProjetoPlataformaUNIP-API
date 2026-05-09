@@ -15,7 +15,7 @@ public class DesafioController {
     private DesafioService desafioService;
 
     //Busca um Desafio usando o ID
-    @PostMapping
+    @PostMapping("get")
     public List<DesafioEntity> getDesafio(@RequestBody ArrayList<Long> IDs){
         return desafioService.GetDesafio(IDs);
     }
